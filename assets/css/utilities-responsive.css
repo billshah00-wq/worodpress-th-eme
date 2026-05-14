@@ -39,7 +39,7 @@
 .betpro-site-nav a {
     color: hsl(var(--foreground, 222.2 84% 4.9%) / 0.72);
     font-weight: 800;
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif !important;
 }
 
 .betpro-site-nav a:hover {
@@ -76,9 +76,10 @@
 
 .betpro-site-header__cta a {
     white-space: nowrap;
-    background-color: #059669 !important;
-    border-color: #059669 !important;
-    color: #fff !important;
+    background-color: #f5c518 !important;
+    border-color: #f5c518 !important;
+    color: #111111 !important;
+    box-shadow: 0 14px 30px rgba(245, 197, 24, 0.34);
 }
 
 .betpro-site-nav__item--has-mega > a {

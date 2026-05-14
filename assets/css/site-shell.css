@@ -3,6 +3,8 @@
 }
 
 body.betpro-account-theme {
+  --betpro-accent: #f5c518;
+  --betpro-accent-text: #111111;
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
   font-size: 17px;
   line-height: 1.65;
@@ -11,6 +13,8 @@ body.betpro-account-theme {
 
 @media (max-width: 640px) {
   body.betpro-account-theme {
+  --betpro-accent: #f5c518;
+  --betpro-accent-text: #111111;
     font-size: 16px;
     line-height: 1.6;
   }
