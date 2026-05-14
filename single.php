@@ -62,7 +62,12 @@ while (have_posts()) :
                         <footer class="betpro-single-tags">
                             <?php foreach ($terms as $term) : ?>
                                 <?php if ($term instanceof WP_Term) : ?>
-                                    <span><?php echo esc_html($term->name); ?></span>
+                                    <?php $term_link = get_term_link($term); ?>
+                                    <?php if (! is_wp_error($term_link)) : ?>
+                                        <a href="<?php echo esc_url($term_link); ?>"><?php echo esc_html($term->name); ?></a>
+                                    <?php else : ?>
+                                        <span><?php echo esc_html($term->name); ?></span>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         </footer>
