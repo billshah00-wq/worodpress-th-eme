@@ -24,11 +24,11 @@ function betpro_account_render_button(string $url, string $label, string $varian
 {
     $classes = $variant === 'secondary'
         ? 'inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl border border-primary/35 text-foreground font-semibold text-sm hover:bg-primary/10 transition-colors'
-        : 'inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl text-white font-bold text-sm shadow-[0_0_24px_rgba(5,150,105,0.28)] hover:opacity-95 transition-opacity';
+        : 'inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl text-black font-bold text-sm shadow-[0_0_24px_rgba(245,197,24,0.45)] hover:opacity-95 transition-opacity';
     $icon = '';
     $style = $variant === 'secondary'
         ? ''
-        : ' style="background-color:#059669;border-color:#059669;"';
+        : ' style="background-color:#f5c518;border-color:#f5c518;color:#111111;"';
 
     if ($external) {
         $icon = '<i class="fa-brands fa-whatsapp" aria-hidden="true"></i>';
