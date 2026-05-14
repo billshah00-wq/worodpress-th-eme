@@ -31,7 +31,7 @@ body.betpro-account-theme .betpro-testimonials-section article {
     justify-content: center;
     margin: 2rem auto 0;
     padding: 1rem;
-    max-width: 54rem;
+    max-width: 82rem;
     border: 1px solid rgba(15, 118, 110, 0.1);
     border-radius: 0.7rem;
     background: rgba(255, 255, 255, 0.82);
@@ -110,7 +110,7 @@ body.betpro-account-theme .betpro-testimonials-section article {
 
 .betpro-compare-table {
     overflow: hidden;
-    max-width: 54rem;
+    max-width: 82rem;
     margin: 2.5rem auto 0;
     border: 1px solid rgba(15, 118, 110, 0.14);
     border-radius: 0.8rem;

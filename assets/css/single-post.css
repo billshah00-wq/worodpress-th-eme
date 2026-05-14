@@ -276,6 +276,12 @@ body.single-post .betpro-post-card:hover .betpro-post-card__media img {
   transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
+
+.betpro-single-tags a {
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
 .betpro-single-tags a:hover,
 .betpro-single-tags a:focus-visible {
   background: #f5c518;

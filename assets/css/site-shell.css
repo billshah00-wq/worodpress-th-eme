@@ -12,6 +12,18 @@ body.betpro-account-theme {
   overflow-x: hidden;
 }
 
+
+body.betpro-account-theme p {
+  font-size: 1.08rem !important;
+  line-height: 1.78;
+}
+
+@media (max-width: 640px) {
+  body.betpro-account-theme p {
+    font-size: 1rem !important;
+    line-height: 1.7;
+  }
+}
 @media (max-width: 640px) {
   body.betpro-account-theme {
   --betpro-accent: #f5c518;

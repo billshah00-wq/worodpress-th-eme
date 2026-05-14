@@ -488,7 +488,7 @@ window.betproNative = {$encoded_config};
         var clockNode = panel.querySelector('[data-betpro-live-clock]');
         var statuses = [
             'One BetPro order cleared checks and moved to delivery 4 minutes ago.',
-            'Support wrapped up a SixerPlus handover for a returning customer.',
+            'Support wrapped up a verified account handover for a returning customer.',
             'A fresh WhatsApp order just entered the verification queue.',
             'Another completed account was released to the delivery desk.'
         ];

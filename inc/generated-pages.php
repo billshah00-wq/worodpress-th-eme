@@ -14,8 +14,8 @@ function betpro_account_faq_items(): array
             'answer' => __('Message us on WhatsApp, tell us you need a BetPro account, share your requirements, pay the deposit in PKR, and we complete the setup for you.', 'betpro-account'),
         ),
         array(
-            'question' => __('Can you help with a SixerPlus account too?', 'betpro-account'),
-            'answer' => __('Yes. We also help with SixerPlus accounts and other verified betting account requests. Send the platform name and your requirements and we will guide you.', 'betpro-account'),
+            'question' => __('Can you help with another betting account too?', 'betpro-account'),
+            'answer' => __('Yes. We also help with other verified betting account requests. Send the platform name and your requirements and we will guide you.', 'betpro-account'),
         ),
         array(
             'question' => __('What details do you need from me?', 'betpro-account'),

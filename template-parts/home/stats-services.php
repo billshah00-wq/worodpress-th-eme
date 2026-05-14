@@ -6,7 +6,7 @@ if (! defined('ABSPATH')) {
 ?>
 
 <section class="betpro-stat-band py-16 bg-primary/5 border-b border-primary/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 gap-6 text-center md:grid-cols-4">
             <?php
             $stats = array(
@@ -32,7 +32,7 @@ if (! defined('ABSPATH')) {
             <div class="betpro-live-sales__intro">
                 <p class="betpro-eyebrow"><?php esc_html_e('Live Sales Desk', 'betpro-account'); ?></p>
                 <h2><?php esc_html_e('Verified orders are moving through today’s queue.', 'betpro-account'); ?></h2>
-                <p><?php esc_html_e('This section gives new visitors a realistic snapshot of active BetPro and SixerPlus orders, verification checks, and delivery progress happening across the day.', 'betpro-account'); ?></p>
+                <p><?php esc_html_e('This section gives new visitors a realistic snapshot of active BetPro orders, verification checks, and delivery progress happening across the day.', 'betpro-account'); ?></p>
                 <div class="betpro-live-sales__meta">
                     <span><?php esc_html_e('Auto-updating trust counter', 'betpro-account'); ?></span>
                     <span data-betpro-live-clock><?php esc_html_e('Updated just now', 'betpro-account'); ?></span>
@@ -42,7 +42,7 @@ if (! defined('ABSPATH')) {
                 <article class="betpro-live-sales__card">
                     <span><?php esc_html_e('Orders Closed Today', 'betpro-account'); ?></span>
                     <strong data-betpro-live-number data-base="18" data-min="16" data-max="24">18</strong>
-                    <small><?php esc_html_e('Combined BetPro + SixerPlus sales', 'betpro-account'); ?></small>
+                    <small><?php esc_html_e('Combined BetPro sales', 'betpro-account'); ?></small>
                 </article>
                 <article class="betpro-live-sales__card">
                     <span><?php esc_html_e('Accounts In Verification', 'betpro-account'); ?></span>
@@ -78,7 +78,7 @@ if (! defined('ABSPATH')) {
 </section>
 
 <section class="betpro-home-services py-24 bg-background">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="betpro-section-heading betpro-reveal text-center max-w-2xl mx-auto mb-14" data-betpro-reveal>
             <p class="betpro-eyebrow"><?php esc_html_e('Why BetPro', 'betpro-account'); ?></p>
             <h2 class="text-3xl md:text-4xl font-extrabold mb-4"><?php esc_html_e('Why Bettors Choose BetPro Account', 'betpro-account'); ?></h2>
