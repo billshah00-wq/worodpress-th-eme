@@ -28,7 +28,7 @@ if (! defined('ABSPATH')) {
                 </label>
                 <label>
                     <span><?php esc_html_e('Platform', 'betpro-account'); ?></span>
-                    <input type="text" name="platform" placeholder="<?php esc_attr_e('BetPro, SixerPlus, Bet365...', 'betpro-account'); ?>" required>
+                    <input type="text" name="platform" placeholder="<?php esc_attr_e('BetPro, Bet365...', 'betpro-account'); ?>" required>
                 </label>
             </div>
             <label>
