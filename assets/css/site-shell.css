@@ -1,0 +1,27 @@
+.betpro-native-theme {
+  background: hsl(var(--background, 0 0% 100%));
+}
+
+body.betpro-account-theme {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+body.betpro-account-theme h1,
+body.betpro-account-theme h2,
+body.betpro-account-theme h3,
+body.betpro-account-theme h4,
+body.betpro-account-theme h5,
+body.betpro-account-theme h6,
+body.betpro-account-theme .betpro-site-brand,
+body.betpro-account-theme .betpro-section-heading,
+body.betpro-account-theme .betpro-floating-whatsapp {
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+body.betpro-account-theme .betpro-home-hero h1,
+body.betpro-account-theme .betpro-page-hero__copy h1,
+body.betpro-account-theme .betpro-section-heading h2 {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-variation-settings: 'opsz' 32;
+  letter-spacing: -0.03em;
+}
