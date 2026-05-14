@@ -39,6 +39,7 @@
 .betpro-site-nav a {
     color: hsl(var(--foreground, 222.2 84% 4.9%) / 0.72);
     font-weight: 800;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 .betpro-site-nav a:hover {

@@ -20,27 +20,14 @@ $person_image = (string) ($args['person_image'] ?? '');
                     <?php esc_html_e('#1 Verified Betting Account Provider', 'betpro-account'); ?>
                 </div>
                 <h1 class="text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight mb-6 leading-[1.08]">
-                    <span class="betpro-home-hero__line"><?php esc_html_e('BetPro Account', 'betpro-account'); ?></span>
-                    <span class="betpro-home-hero__line text-gradient-green"><?php esc_html_e('That Delivers', 'betpro-account'); ?></span>
-                    <span class="betpro-home-hero__line"><?php esc_html_e('Verified Betting Accounts', 'betpro-account'); ?></span>
+                    <span class="betpro-home-hero__line"><?php esc_html_e('Buy Verified BetPro Account', 'betpro-account'); ?></span>
+                    <span class="betpro-home-hero__line text-gradient-green"><?php esc_html_e('or BetPro ID in Pakistan', 'betpro-account'); ?></span>
                 </h1>
-                <div class="betpro-home-hero__chips">
-                    <?php foreach (array('BetPro', 'SixerPlus') as $platform) : ?>
-                        <a class="betpro-platform-chip" href="<?php echo esc_url(home_url('/services/')); ?>">
-                            <span class="betpro-platform-chip__dot" aria-hidden="true"></span>
-                            <span><?php echo esc_html($platform); ?></span>
-                            <span class="betpro-platform-chip__icon" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
                 <p class="text-lg text-muted-foreground mb-9 leading-8 max-w-xl">
-                    <?php esc_html_e('We create, verify, and hand-deliver premium BetPro and SixerPlus accounts for customers who need fast, reliable setup and support.', 'betpro-account'); ?>
+                    <?php esc_html_e('We create, verify, and hand-deliver premium BetPro accounts for customers who need fast, reliable setup and support in Pakistan.', 'betpro-account'); ?>
                 </p>
                 <div class="betpro-home-hero__actions flex flex-col sm:flex-row gap-4 mb-8">
-                    <?php
-                    betpro_account_render_button(betpro_account_whatsapp_url(), betpro_account_primary_cta_label(), 'primary', true);
-                    betpro_account_render_button(home_url('/services/'), __('View Services', 'betpro-account'), 'secondary');
-                    ?>
+                    <?php betpro_account_render_button(betpro_account_whatsapp_url(), betpro_account_primary_cta_label(), 'primary', true); ?>
                 </div>
                 <div class="betpro-home-hero__proof grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
                     <?php foreach (array('100% KYC Verified', 'Delivered in 24-48h', 'Replacement Guarantee', '24/7 WhatsApp Support') as $proof) : ?>
@@ -64,13 +51,5 @@ $person_image = (string) ($args['person_image'] ?? '');
                 <?php endforeach; ?>
             </div>
         </div>
-    </div>
-</section>
-
-<section class="betpro-bookmaker-strip" aria-label="<?php esc_attr_e('Currently supported bookmakers', 'betpro-account'); ?>">
-    <div class="betpro-bookmaker-strip__track">
-        <?php foreach (array('Betpro', 'SixerPlus', 'BetBro', 'SixerPlus', 'BetPro', 'SixerPlus', 'Betpro', 'SixerPlus') as $bookmaker) : ?>
-            <span><?php echo esc_html($bookmaker); ?></span>
-        <?php endforeach; ?>
     </div>
 </section>
