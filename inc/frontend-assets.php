@@ -65,7 +65,7 @@ function betpro_account_enqueue_assets(): void
 
     $css_files = array_values(array_unique($css_files));
 
-    $app_style_handles = betpro_account_enqueue_app_styles($css_files);
+    $app_style_handles = betpro_account_enqueue_app_styles($css_files, $theme_version);
     array_unshift($app_style_handles, $font_handle);
     array_unshift($app_style_handles, $fontawesome_handle);
 
@@ -132,9 +132,10 @@ function betpro_account_enqueue_local_fonts(string $theme_version): string
     return $handle;
 }
 
-function betpro_account_enqueue_app_styles(array $css_files): array
+function betpro_account_enqueue_app_styles(array $css_files, string $theme_version): array
 {
     $app_style_handles = array();
+    $asset_uri = rtrim(betpro_account_asset_uri(), '/');
 
     foreach ($css_files as $index => $css_file) {
         if (! is_string($css_file) || $css_file === '') {
@@ -142,120 +143,31 @@ function betpro_account_enqueue_app_styles(array $css_files): array
         }
 
         $handle = "betpro-account-app-{$index}";
-        $css = betpro_account_compiled_app_css($css_file);
+        $normalized = betpro_account_normalize_asset_path($css_file);
 
-        if ($css === '') {
+        if ($normalized === '') {
             continue;
         }
 
+        $path = betpro_account_asset_dir() . '/' . $normalized;
+        if (! is_file($path)) {
+            continue;
+        }
+
+        $style_uri = $asset_uri . '/' . ltrim($normalized, '/');
+
         wp_register_style(
             $handle,
-            false,
+            $style_uri,
             array(),
-            betpro_account_asset_version($css_file)
+            betpro_account_asset_version($normalized, $theme_version)
         );
         wp_enqueue_style($handle);
-        wp_add_inline_style($handle, $css);
 
         $app_style_handles[] = $handle;
     }
 
     return array_values(array_unique($app_style_handles));
-}
-
-function betpro_account_compiled_app_css(string $css_file): string
-{
-    $source_files = array_merge(array($css_file), betpro_account_app_css_imports($css_file));
-    $source_files = array_values(array_unique($source_files));
-
-    return betpro_account_css_bundle($source_files, betpro_account_asset_dir());
-}
-
-function betpro_account_app_css_imports(string $css_file): array
-{
-    static $cache = array();
-
-    if (isset($cache[$css_file])) {
-        return $cache[$css_file];
-    }
-
-    $css_path = betpro_account_asset_dir() . '/' . ltrim($css_file, '/');
-
-    if (! is_file($css_path)) {
-        $cache[$css_file] = array();
-        return array();
-    }
-
-    $contents = file_get_contents($css_path);
-
-    if (! is_string($contents) || $contents === '') {
-        $cache[$css_file] = array();
-        return array();
-    }
-
-    if (! preg_match_all('/@import\s+(?:url\()?["\']([^"\')]+)["\']\)?[^;]*;/', $contents, $matches)) {
-        $cache[$css_file] = array();
-        return array();
-    }
-
-    $base_dir = trim(dirname($css_file), '.');
-    $base_dir = $base_dir === '' ? '' : trim($base_dir, '/') . '/';
-    $import_files = array();
-
-    foreach ($matches[1] as $import_url) {
-        if (! is_string($import_url) || $import_url === '' || preg_match('/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i', $import_url)) {
-            continue;
-        }
-
-        $normalized = betpro_account_normalize_asset_path($base_dir . $import_url);
-
-        if ($normalized !== '' && is_file(betpro_account_asset_dir() . '/' . $normalized)) {
-            $import_files[] = $normalized;
-        }
-    }
-
-    $cache[$css_file] = array_values(array_unique($import_files));
-
-    return $cache[$css_file];
-}
-
-function betpro_account_css_bundle(array $asset_files, string $base_dir): string
-{
-    $asset_files = array_values(
-        array_filter(
-            array_unique($asset_files),
-            static function ($asset_file): bool {
-                return is_string($asset_file) && $asset_file !== '';
-            }
-        )
-    );
-
-    if (empty($asset_files)) {
-        return '';
-    }
-
-    $css = '';
-
-    foreach ($asset_files as $asset_file) {
-        $path = rtrim($base_dir, '/') . '/' . ltrim($asset_file, '/');
-
-        if (! is_file($path)) {
-            continue;
-        }
-
-        $contents = file_get_contents($path);
-
-        if (! is_string($contents) || $contents === '') {
-            continue;
-        }
-
-        $contents = preg_replace('/@import\s+(?:url\()?["\'][^"\')]+["\']\)?[^;]*;/', '', $contents);
-        $css .= "\n/* " . esc_html($asset_file) . " */\n" . trim((string) $contents) . "\n";
-    }
-
-    $css = trim($css);
-
-    return $css;
 }
 
 function betpro_account_normalize_asset_path(string $path): string
@@ -308,10 +220,28 @@ function betpro_account_enqueue_theme_styles(string $theme_version, array $depen
         betpro_account_asset_version('style.css', $theme_version)
     );
 
-    $theme_css = betpro_account_css_bundle($theme_css_files, get_template_directory());
+    $base_uri = rtrim(get_template_directory_uri(), '/');
+    foreach ($theme_css_files as $index => $theme_css_file) {
+        if (! is_string($theme_css_file) || $theme_css_file === '') {
+            continue;
+        }
 
-    if ($theme_css !== '') {
-        wp_add_inline_style('betpro-account-theme', $theme_css);
+        $normalized = betpro_account_normalize_asset_path($theme_css_file);
+        if ($normalized === '') {
+            continue;
+        }
+
+        $path = rtrim(get_template_directory(), '/') . '/' . $normalized;
+        if (! is_file($path)) {
+            continue;
+        }
+
+        wp_enqueue_style(
+            "betpro-account-theme-part-{$index}",
+            $base_uri . '/' . ltrim($normalized, '/'),
+            array('betpro-account-theme'),
+            betpro_account_asset_version($normalized, $theme_version)
+        );
     }
 }
 
